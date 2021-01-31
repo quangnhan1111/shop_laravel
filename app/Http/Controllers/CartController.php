@@ -102,6 +102,7 @@ class CartController extends Controller
                 }
             }
             // nếu đã cí product đó trong giỏ hàng thì ko thêm nữa
+            //neu chua co thi them vao
             if($is_avaiable == 0){
                 $cart[] = array(
                 'session_id' => $session_id,

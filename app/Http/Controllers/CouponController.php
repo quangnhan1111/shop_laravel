@@ -10,6 +10,14 @@ session_start();
 
 class CouponController extends Controller
 {
+    public function AuthLogin(){
+        $admin_id = Session::get('admin_id');
+        if($admin_id){
+            return Redirect::to('dashboard');
+        }else{
+            return Redirect::to('admin')->send();
+        }
+    }
 	public function unset_coupon(){
 		$coupon = Session::get('coupon');
         if($coupon==true){
@@ -19,6 +27,7 @@ class CouponController extends Controller
         }
 	}
     public function insert_coupon(){
+        $this->AuthLogin();
     	return view('admin.coupon.insert_coupon');
     }
     public function delete_coupon($coupon_id){
